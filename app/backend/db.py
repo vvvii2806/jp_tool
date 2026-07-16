@@ -1,7 +1,7 @@
 import psycopg2
 import connect
 
-# Lacks inserting into kanji table
+# Lacks inserting into kanji table, will be done when I learn kanji
 def insert_word(meaning, hiragana=None, katakana=None, kanji=None):
 
 
@@ -37,10 +37,18 @@ def insert_word(meaning, hiragana=None, katakana=None, kanji=None):
     finally:
         connect.close_env(cur, conn)    
 
+
+# TODO: function to add kanji to existing words
+def update_kanji(kanji=None):
+
+
+
+    return
     
-# to add the hiragana or katakana form of a word depending on which one is already empty and which one 
+# To add the hiragana or katakana form of a word depending on which one is empty
+# and which one is registered
 def update_words(hiragana=None, katakana=None):
-    do_update = """UPDATE words
+    add_kana = """UPDATE words
         SET
             hiragana = COALESCE(%s, hiragana),
             katakana = COALESCE(%s, katakana)
@@ -50,7 +58,7 @@ def update_words(hiragana=None, katakana=None):
     cur, conn = connect.create_cursor()
     try:
 
-        cur.execute(do_update, (
+        cur.execute(add_kana, (
             hiragana, katakana,
             hiragana, hiragana,
             katakana, katakana
@@ -82,6 +90,7 @@ def get_random():
     row = cur.fetchall()
     connect.print_rows(cur, row)
 
+# To keep track of successes/failures and then turn it into weighted chance maybe
 def register_attempt(word_id, isSuccess=False, isFailure=False):
     register = """UPDATE words
         SET
@@ -107,7 +116,7 @@ def register_attempt(word_id, isSuccess=False, isFailure=False):
     finally:
         connect.close_env(cur, conn)
 
-
+# Testing the functions to see if they work like intended
 if __name__ == '__main__':
 
     print(insert_word(hiragana="いぬ", meaning="dog"))
