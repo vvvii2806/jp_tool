@@ -4,4 +4,3 @@ Project made for fun to help myself learn japanese and code something useful, ho
 
 run `pip install -r requirements.txt`
 
-

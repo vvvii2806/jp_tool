@@ -9,3 +9,7 @@ test:
 	
 show:
 	sudo -u postgres psql -d jp_vocab -c "SELECT * FROM words JOIN meanings ON words.wid = meanings.wid;"
+
+all:
+	python3 app/backend/db.py
+	python3 cleardb.py

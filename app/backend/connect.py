@@ -25,6 +25,10 @@ def close_env(cursor, connection):
 
 
 def print_rows(cursor, rows):
+    if not cursor or not cursor.description:
+        print("Empty cursor")
+        return
+    
     cols = [d[0] for d in cursor.description]
     
     widths = [max(len(str(x)) for x in col) for col in zip(cols, *rows)]
