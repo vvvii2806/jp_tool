@@ -14,8 +14,10 @@ def add_word():
     meaning = data.get('meaning')
     hiragana = data.get('hiragana') 
     katakana = data.get('katakana')
+    kanji = data.get('kanji')
+    note = data.get('note')
 
-    return adapter.add_word(meaning, hiragana, katakana)
+    return adapter.add_word(meaning, hiragana, katakana, kanji, note)
 
 @app.route("/api/attempt", methods=['PATCH'])
 def attempt():
@@ -34,5 +36,7 @@ def update():
 
     hiragana = data.get('hiragana')
     katakana = data.get('katakana')
+    kanji_form = data.get('kanji_form')
+    note = data.get('note')
 
-    return adapter.add_kana(hiragana, katakana)
+    return adapter.update_word(hiragana, katakana, kanji_form, note)

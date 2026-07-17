@@ -6,37 +6,44 @@ def _to_dicts(cursor, rows):
 
 
 def get_word():
-    row, cursor = queries.get_random()
+    word, res = queries.get_random()
+    row = word[0]
+    cursor = word[1]
     if not row:
         return []
     return _to_dicts(cursor, row)
 
-
-# TODO: ADJUST FUNCTIONS TO NEW SCHEMA
-def add_word(meaning, hiragana=None, katakana=None, kanji=None):
+def add_word(meaning, hiragana=None, katakana=None, kanji=None, note=None):
+    # Error if request lacks necessary values to add word
     if not meaning or meaning == "" or (not hiragana and not katakana):
-        return {'type': 'Error', "text": "Empty meaning/request"}, 400
+        return {"Error": "Empty meaning/request"}, 400
     
-    res = queries.insert_word(meaning, hiragana=hiragana, katakana=katakana, kanji=kanji)
+    res = queries.add_word(meaning, hiragana=hiragana, katakana=katakana, kanji=kanji, note=note)
 
-    if res is None:
-        return {'type': 'Error', 'text': 'Unkown error while adding word'}, 500
-    return res
+    if not res[0]:
+        return {'Error': f'{res[1]}'}, 500
+    return {'Done': 'No errors'}, 201
+
     
 def register_answer(word_id, succeed=False, fail=False):
+    #Somehow gets no word ID
     if not word_id:
-        return {'type': 'Error', 'text': 'No word associated'}, 500
+        return {'Error': 'Lacking wordID'}, 500
     elif not succeed and not fail:
-        return {'type': 'Error', 'text': 'succeed and fail cannot be false at the same time'}, 400
+        return {'Error': 'succeed and fail false at the same time'}, 400
     
     res = queries.register_attempt(word_id, succeed, fail)
 
-    return res
+    if not res[0]:
+        return {'Error': f'{res[1]}'}, 500
+    return {'Done': 'No errors'}, 201
 
-def add_kana(hiragana, katakana):
-    if not hiragana and not katakana:
-        return {'type': 'Error', 'text': 'Empty kana'}, 400
+def update_word(hiragana=None, katakana=None, kanji_form=None, note=None):
+    if not hiragana and not katakana and not kanji_form and not note:
+        return {'Error': 'No changes were given'}, 400
 
-    res = queries.update_words(hiragana, katakana)
-    return res 
+    res = queries.update_word(hiragana, katakana, kanji_form, note)
+    if not res[0]:
+        return {'Error': f'{res[1]}'}, 500
+    return {'Done': 'No errors'}, 201
 

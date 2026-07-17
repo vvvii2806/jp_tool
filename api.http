@@ -10,7 +10,17 @@ Content-Type: application/json
 {
   "meaning": "horse",
   "hiragana": "うま",
-  "katakana": "ウマ"
+  "note": "neigh"
+}
+
+### another insert
+POST {{baseUrl}}/insert
+Content-Type: application/json
+
+{
+  "meaning": "university",
+  "hiragana": "だいがく",
+  "note": "Means big school"
 }
 
 ### 3 try success
@@ -33,11 +43,20 @@ Content-Type:  application/json
     "fail": "True"
 }
 
-### 5 update kana attempt
+### 5 update kana
 PATCH  {{baseUrl}}/update
-Content-Type: : application/json
+Content-Type: application/json
 
 {
     "hiragana": "だいがく",
     "katakana": "ダイカグ"
+}
+
+### another update attempt
+PATCH  {{baseUrl}}/update
+Content-Type: application/json
+
+{
+    "hiragana": "うま",
+    "kanji_form": "馬"
 }
