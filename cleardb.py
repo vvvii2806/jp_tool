@@ -7,7 +7,7 @@ def limpiar_tablas_de_prueba():
     connection.commit()
     
 
-    close_env(cursor, connection)
+    close_connection(cursor, connection)
     print("DB clean")
 
 if __name__ == "__main__":
