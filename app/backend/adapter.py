@@ -11,9 +11,11 @@ def get_word():
         return []
     return _to_dicts(cursor, row)
 
+
+# TODO: ADJUST FUNCTIONS TO NEW SCHEMA
 def add_word(meaning, hiragana=None, katakana=None, kanji=None):
-    if not meaning:
-        return {'type': 'Error', "text": "No meaning specified or emtpy request"}, 400
+    if not meaning or meaning == "" or (not hiragana and not katakana):
+        return {'type': 'Error', "text": "Empty meaning/request"}, 400
     
     res = queries.insert_word(meaning, hiragana=hiragana, katakana=katakana, kanji=kanji)
 
