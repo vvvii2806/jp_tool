@@ -18,11 +18,16 @@ def add_word(meaning, hiragana=None, katakana=None, kanji=None, note=None):
     if not meaning or meaning == "" or (not hiragana and not katakana):
         return {"Error": "Empty meaning/request"}, 400
     
-    res = queries.add_word(meaning, hiragana=hiragana, katakana=katakana, kanji=kanji, note=note)
+    exists = queries.check_duplicate(hiragana, katakana, kanji)
 
-    if not res[0]:
-        return {'Error': f'{res[1]}'}, 500
-    return {'Done': 'No errors'}, 201
+    if not exists:
+        res = queries.add_word(meaning, hiragana=hiragana, katakana=katakana, kanji=kanji, note=note)
+
+        if not res[0]:
+            return {'Error': f'{res[1]}'}, 500
+        return {'Done': 'No errors'}, 201
+    else:
+        return {'Error': 'Duplicate'}, 409
 
     
 def register_answer(word_id, succeed=False, fail=False):

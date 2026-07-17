@@ -83,7 +83,7 @@ def register_attempt(word_id, isSuccess=False, isFailure=False):
 
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
-        conn.rollback
+        conn.rollback()
         return False, error
 
 
@@ -134,12 +134,31 @@ def update_kanji(kanji=None):
 
 
 def check_duplicate(hiragana=None, katakana=None, kanji_form=None):
-    search = """SELECT wid 
-        FROM words
-        WHERE COALESCE(hiragana, '') = COALESCE(%s, '')
-            AND COALESCE(katakana, '') = COALESCE(%s, '')
-            AND COALESCE(kanji_form, '') = COALESCE(%s, '');"""
+    search = """SELECT wid FROM words 
+        WHERE (
+            (%s::text IS NOT NULL AND hiragana = %s)
+            OR (%s::text IS NOT NULL AND katakana = %s)
+        )
+        AND (%s::text IS NULL OR COALESCE(kanji_form, '') = %s);
+    """
     pass
+
+    cur, conn = connect.create_cursor()
+
+    try:
+        cur.execute(search, (hiragana, hiragana,
+                katakana, katakana,
+                kanji_form, kanji_form, ))
+        exists = cur.fetchone() is not None
+
+        connect.close_connection(cur, conn)
+
+        return exists
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+        conn.rollback()
+        return
 
 # Testing the functions to see if they work like intended
 if __name__ == '__main__':
