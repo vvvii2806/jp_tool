@@ -18,7 +18,7 @@ def create_cursor():
     return cursor, connection
 
 
-def close_env(cursor, connection):
+def close_connection(cursor, connection):
     cursor.close()
     connection.close()
     return
