@@ -3,11 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
     <title>Japanese learning tool</title>
   </head>
-  <body>
-    <h1>Japanese learn vocabulary thing</h1>
+  <body id="main">
+    <div id="write">
+      <h1>Japanese learn vocabulary thing</h1>
 
-    <h2 id="show_word">{{ hiragana }} {{ katakana }} {{ kanji }}</h2>
+      <h2 id="show_word">{{ hiragana }} {{ katakana }} {{ kanji }}</h2>
+
+      <div>
+        <input type="text" id="answer" autocomplete="off" autofocus />
+      </div>
+    </div>
+
+    <div id="config">
+      <section class="sub">
+        <h3>Add new word</h3>
+
+        <form action="PUT" id="add-word">
+          <div class="change-form">
+            <div>
+              <p>Meaning:</p>
+              <input type="text" id="meaning" placeholder="Meaning" />
+              <p>Hiragana:</p>
+              <input type="text" id="new-hiragana" placeholder="Hiragana " />
+              <p>Katakana:</p>
+              <input type="text" id="new-katakana" placeholder="Katakana " />
+            </div>
+            <div>
+              <p>Kanji:</p>
+              <input type="text" id="new-kanji" placeholder="Kanji" />
+              <p>Note:</p>
+              <input type="text" id="new-note" placeholder="Note" />
+            </div>
+          </div>
+          <button id="submit-word">Add Word</button>
+        </form>
+      </section>
+
+      <section class="sub">
+        <h3>Update word</h3>
+
+        <div class="change-form">
+          <input type="text" id="new-hiragana" placeholder="Hiragana " />
+          <input type="text" id="new-katakana" placeholder="Katakana " />
+          <input type="text" id="new-kanji" placeholder="Kanji" />
+          <input type="text" id="new-note" placeholder="Note" />
+        </div>
+      </section>
+
+      <section class="sub">
+        <h3>Change fonts</h3>
+
+        <div id="font-select">
+          <input type="checkbox" />
+        </div>
+      </section>
+    </div>
   </body>
 </html>
