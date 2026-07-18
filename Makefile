@@ -15,7 +15,7 @@ all:
 	python3 cleardb.py
 
 run:
-	flask --app app/app run --debug
+	python3 app/app.py 
 
 restart:
 	python3 cleardb.py
