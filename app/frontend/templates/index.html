@@ -3,6 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&family=Dela+Gothic+One&family=Hachi+Maru+Pop&family=Kaisei+Tokumin&family=M+PLUS+Rounded+1c&family=Mochiy+Pop+One&family=Shippori+Mincho&family=Shippori+Mincho+B1&family=Yuji+Boku&family=Yuji+Mai&family=Yuji+Syuku&family=Zen+Kurenaido&display=swap"
+      rel="stylesheet"
+    />
+
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='styles.css') }}"
@@ -13,7 +21,7 @@
     <div id="write">
       <h1>Japanese vocabulary thingy</h1>
 
-      <h2 id="show_word">{{ hiragana }}</h2>
+      <h2 id="show-word">{{ hiragana }}</h2>
 
       <div>
         <input type="text" id="answer" autocomplete="off" autofocus />
@@ -43,7 +51,7 @@
               <input type="text" id="new-note" placeholder="Note" />
             </div>
           </div>
-          <button id="submit-word">Add Word</button>
+          <button id="submit-word" type="button">Add Word</button>
         </form>
       </section>
 
@@ -56,7 +64,7 @@
             <input type="text" id="new-katakana" placeholder="Katakana " />
             <input type="text" id="new-kanji" placeholder="Kanji" />
             <input type="text" id="new-note" placeholder="Note" />
-            <button id="submit-word">Update word</button>
+            <button id="update-word">Update word</button>
           </div>
         </form>
       </section>
@@ -65,9 +73,94 @@
         <h3>Change fonts</h3>
 
         <div id="font-select">
-          <input type="checkbox" />
+          <label class="font-0 preview-kana"
+            ><input type="checkbox" class="font-type" value="font-0" />ぬ</label
+          >
+          <label class="font-1 preview-kana"
+            ><input type="checkbox" class="font-type" value="font-1" />ぬ</label
+          >
+          <label class="font-2 preview-kana"
+            ><input type="checkbox" class="font-type" value="font-2" />ぬ</label
+          >
+          <label class="font-3 preview-kana"
+            ><input type="checkbox" class="font-type" value="font-3" />
+            ぬ</label
+          >
+          <label class="font-4 preview-kana"
+            ><input type="checkbox" class="font-type" value="font-4" />
+            ぬ</label
+          >
+          <label class="font-5 preview-kana"
+            ><input type="checkbox" class="font-type" value="font-5" />
+            ぬ</label
+          >
+          <label class="font-6 preview-kana"
+            ><input type="checkbox" class="font-type" value="font-6" />
+            ぬ</label
+          >
+          <label class="font-7 preview-kana"
+            ><input type="checkbox" class="font-type" value="font-7" />ぬ</label
+          >
+          <label class="font-8 preview-kana"
+            ><input type="checkbox" class="font-type" value="font-8" />ぬ</label
+          >
+          <label class="font-9 preview-kana"
+            ><input type="checkbox" class="font-type" value="font-9" />ぬ</label
+          >
+          <label class="font-10 preview-kana"
+            ><input
+              type="checkbox"
+              class="font-type"
+              value="font-10"
+            />ぬ</label
+          >
+          <label class="font-11 preview-kana"
+            ><input
+              type="checkbox"
+              class="font-type"
+              value="font-11"
+            />ぬ</label
+          >
+          <label class="font-12 preview-kana"
+            ><input
+              type="checkbox"
+              class="font-type"
+              value="font-12"
+            />ぬ</label
+          >
         </div>
       </section>
     </div>
   </body>
+
+  <script>
+    // const show = document.getElementById("show-word");
+    // const n = document.createElement("div");
+    // n.textContent = "ola";
+    // show.after(n);
+
+    const btn = document.getElementById("submit-word");
+
+    function random(number) {
+      return Math.floor(Math.random() * (number + 1));
+    }
+
+    btn.addEventListener("click", () => {
+      const col = `rgb(${random(255)} ${random(255)} ${random(255)})`;
+      const h = document.getElementById("show-word");
+      h.style.color = col;
+    });
+
+    //this for the word detection function
+    const ans = document.getElementById("answer");
+    const pressed = document.createElement("div");
+    ans.after(pressed);
+    ans.addEventListener("keydown", (event) => {
+      pressed.textContent = `pressed: "${event.key}"`;
+    });
+
+    document.querySelectorAll(".font-type").forEach((check) => {
+      check.parentElement.classList.add(check.value, "preview-kana");
+    });
+  </script>
 </html>

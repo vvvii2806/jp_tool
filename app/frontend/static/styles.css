@@ -1,3 +1,61 @@
+@font-face {
+  font-family: "kouzan-brush";
+  src: url("./fonts/kouzan-brush-sousho.ttf") format("truetype");
+  font-display: swap;
+}
+
+.font-0 {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+}
+
+.font-1 {
+  font-family: "BIZ UDPMincho", serif;
+}
+
+.font-2 {
+  font-family: "Dela Gothic One", sans-serif;
+}
+
+.font-3 {
+  font-family: "Hachi Maru Pop", cursive;
+}
+
+.font-4 {
+  font-family: "Kaisei Tokumin", serif;
+}
+
+.font-5 {
+  font-family: "Mochiy Pop One", sans-serif;
+}
+
+.font-6 {
+  font-family: "Shippori Mincho", serif;
+}
+
+.font-7 {
+  font-family: "Shippori Mincho B1", serif;
+}
+
+.font-8 {
+  font-family: "Yuji Boku", serif;
+}
+
+.font-9 {
+  font-family: "Yuji Mai", cursive;
+}
+
+.font-10 {
+  font-family: "Yuji Syuku", serif;
+}
+
+.font-11 {
+  font-family: "Zen Kurenaido", sans-serif;
+}
+
+.font-12 {
+  font-family: "kouzan-brush", cursive;
+}
+
 #main {
   display: flex;
   flex-flow: column;
@@ -24,4 +82,17 @@
 #config {
   display: flexbox;
   align-items: center;
+}
+
+#font-select {
+  display: grid;
+
+  grid-template-rows: repeat(2, lfr);
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+}
+
+label.preview-kana {
+  font-size: 3.5rem;
+  cursor: pointer;
 }

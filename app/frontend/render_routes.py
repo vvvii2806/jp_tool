@@ -43,7 +43,6 @@ def render(app):
         return adapter.update_word(hiragana, katakana, kanji_form, note)
     
     @app.route("/")
-    @app.route("/<name>")
     def test():
         data = adapter.get_word()
         
