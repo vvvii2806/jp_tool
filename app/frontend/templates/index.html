@@ -11,9 +11,9 @@
   </head>
   <body id="main">
     <div id="write">
-      <h1>Japanese learn vocabulary thing</h1>
+      <h1>Japanese vocabulary thingy</h1>
 
-      <h2 id="show_word">{{ hiragana }} {{ katakana }} {{ kanji }}</h2>
+      <h2 id="show_word">{{ hiragana }}</h2>
 
       <div>
         <input type="text" id="answer" autocomplete="off" autofocus />
@@ -21,6 +21,8 @@
     </div>
 
     <div id="config">
+      <h2>Options menu</h2>
+
       <section class="sub">
         <h3>Add new word</h3>
 
@@ -48,12 +50,15 @@
       <section class="sub">
         <h3>Update word</h3>
 
-        <div class="change-form">
-          <input type="text" id="new-hiragana" placeholder="Hiragana " />
-          <input type="text" id="new-katakana" placeholder="Katakana " />
-          <input type="text" id="new-kanji" placeholder="Kanji" />
-          <input type="text" id="new-note" placeholder="Note" />
-        </div>
+        <form action="">
+          <div class="change-form">
+            <input type="text" id="new-hiragana" placeholder="Hiragana " />
+            <input type="text" id="new-katakana" placeholder="Katakana " />
+            <input type="text" id="new-kanji" placeholder="Kanji" />
+            <input type="text" id="new-note" placeholder="Note" />
+            <button id="submit-word">Update word</button>
+          </div>
+        </form>
       </section>
 
       <section class="sub">

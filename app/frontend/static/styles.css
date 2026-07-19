@@ -16,3 +16,12 @@
   gap: 18px;
   padding-bottom: 12px;
 }
+
+#write h2 {
+  font-size: 4rem;
+}
+
+#config {
+  display: flexbox;
+  align-items: center;
+}

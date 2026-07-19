@@ -1,5 +1,6 @@
 from flask import request, render_template, request, url_for
 from backend import adapter
+from random import randint
 
 def render(app):
 
@@ -49,5 +50,8 @@ def render(app):
         hiragana = data[0]['hiragana']
         katakana = data[0]['katakana']
         kanji_form = data[0]['kanji_form']
+        word_id = data[0]['wid']
+        meaning = data[0]['meaning']
+        note = data[0]['note']
 
         return render_template('index.html', hiragana=hiragana, katakana=katakana, kanji = kanji_form)
