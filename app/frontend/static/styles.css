@@ -33,26 +33,22 @@
 }
 
 .font-7 {
-  font-family: "Shippori Mincho B1", serif;
-}
-
-.font-8 {
   font-family: "Yuji Boku", serif;
 }
 
-.font-9 {
+.font-8 {
   font-family: "Yuji Mai", cursive;
 }
 
-.font-10 {
+.font-9 {
   font-family: "Yuji Syuku", serif;
 }
 
-.font-11 {
+.font-10 {
   font-family: "Zen Kurenaido", sans-serif;
 }
 
-.font-12 {
+.font-11 {
   font-family: "kouzan-brush", cursive;
 }
 
@@ -62,6 +58,7 @@
   justify-content: center;
   align-items: center;
 }
+
 #write {
   display: flex;
   flex-flow: column;
@@ -77,6 +74,13 @@
 
 #write h2 {
   font-size: 4rem;
+  min-height: 1.4em;
+  width: 100%;
+  margin: 0;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 #config {
@@ -88,7 +92,7 @@
   display: grid;
 
   grid-template-rows: repeat(2, lfr);
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 12px;
 }
 

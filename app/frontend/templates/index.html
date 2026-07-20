@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&family=Dela+Gothic+One&family=Hachi+Maru+Pop&family=Kaisei+Tokumin&family=M+PLUS+Rounded+1c&family=Mochiy+Pop+One&family=Shippori+Mincho&family=Shippori+Mincho+B1&family=Yuji+Boku&family=Yuji+Mai&family=Yuji+Syuku&family=Zen+Kurenaido&display=swap"
+      href="https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&family=Dela+Gothic+One&family=Hachi+Maru+Pop&family=Kaisei+Tokumin&family=M+PLUS+Rounded+1c&family=Mochiy+Pop+One&family=Shippori+Mincho&family=Yuji+Boku&family=Yuji+Mai&family=Yuji+Syuku&family=Zen+Kurenaido&display=swap"
       rel="stylesheet"
     />
 
@@ -121,46 +121,10 @@
               value="font-11"
             />ぬ</label
           >
-          <label class="font-12 preview-kana"
-            ><input
-              type="checkbox"
-              class="font-type"
-              value="font-12"
-            />ぬ</label
-          >
         </div>
       </section>
     </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
   </body>
-
-  <script>
-    // const show = document.getElementById("show-word");
-    // const n = document.createElement("div");
-    // n.textContent = "ola";
-    // show.after(n);
-
-    const btn = document.getElementById("submit-word");
-
-    function random(number) {
-      return Math.floor(Math.random() * (number + 1));
-    }
-
-    btn.addEventListener("click", () => {
-      const col = `rgb(${random(255)} ${random(255)} ${random(255)})`;
-      const h = document.getElementById("show-word");
-      h.style.color = col;
-    });
-
-    //this for the word detection function
-    const ans = document.getElementById("answer");
-    const pressed = document.createElement("div");
-    ans.after(pressed);
-    ans.addEventListener("keydown", (event) => {
-      pressed.textContent = `pressed: "${event.key}"`;
-    });
-
-    document.querySelectorAll(".font-type").forEach((check) => {
-      check.parentElement.classList.add(check.value, "preview-kana");
-    });
-  </script>
 </html>
