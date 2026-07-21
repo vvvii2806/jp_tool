@@ -1,22 +1,11 @@
-// const show = document.getElementById("show-word");
-// const n = document.createElement("div");
-// n.textContent = "ola";
-// show.after(n);
-
-//for answer detection
-const ans = document.getElementById("answer");
-const pressed = document.createElement("div");
-ans.after(pressed);
-ans.addEventListener("keydown", (event) => {
-  pressed.textContent = `pressed: "${event.key}"`;
-});
-
+// TODO: JOIN RANDOM FONT WITH INPUT DETECTION SO IT CHANGES FONT AFTER EVERY WORD
+// To show a preview of each font in the checkboxes
 document.querySelectorAll(".font-type").forEach((check) => {
   check.parentElement.classList.add(check.value, "preview-kana");
 });
 
-// font changer with randomizer (currently works with button, objective is for it to change when word is changed so it gets the new list of checked fonts)
-const show = document.getElementById("show-word");
+// Random font selector according to checked boxes
+// (currently works with button, objective is for it to change when the word changes so it refreshes the new list)
 const checked = document.querySelectorAll('input[type="checkbox"]:checked');
 
 const btn = document.getElementById("submit-word");
@@ -31,4 +20,37 @@ btn.addEventListener("click", () => {
   h.style.color = col;
   const font = checked[random(checked.length)].value;
   h.className = font;
+});
+
+// Made to detect the input and change the word is it's correct
+const test = [
+  { hiragana: "いぬ", meaning: "inu" },
+  { hiragana: "ねこ", meaning: "neko" },
+  { hiragana: "みず", meaning: "mizu" },
+  { hiragana: "やま", meaning: "yama" },
+  { hiragana: "ひと", meaning: "hito" },
+  { hiragana: "くるま", meaning: "kuruma" },
+];
+
+const liveIn = document.getElementById("answer");
+// const pressed = document.createElement("div");
+const show = document.getElementById("show-word");
+
+show.innerHTML = test[0]["hiragana"];
+let meaning = test[0]["meaning"];
+
+// ans.after(pressed);
+liveIn.addEventListener("input", (event) => {
+  //  pressed.textContent = `pressed: "${event.key}"`;
+
+  if (event.target.value == meaning) {
+    console.log("True, changed");
+    const ran = random(5);
+    meaning = test[ran]["meaning"];
+    show.innerHTML = test[ran]["hiragana"];
+
+    event.target.value = "";
+  } else {
+    console.log("false");
+  }
 });
