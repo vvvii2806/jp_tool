@@ -1,26 +1,21 @@
-// TODO: JOIN RANDOM FONT WITH INPUT DETECTION SO IT CHANGES FONT AFTER EVERY WORD
 // To show a preview of each font in the checkboxes
 document.querySelectorAll(".font-type").forEach((check) => {
   check.parentElement.classList.add(check.value, "preview-kana");
 });
 
 // Random font selector according to checked boxes
-// (currently works with button, objective is for it to change when the word changes so it refreshes the new list)
-const checked = document.querySelectorAll('input[type="checkbox"]:checked');
-
-const btn = document.getElementById("submit-word");
 
 function random(number) {
-  return Math.floor(Math.random() * (number + 1));
+  return Math.floor(Math.random() * number);
 }
 
-btn.addEventListener("click", () => {
-  const col = `rgb(${random(255)} ${random(255)} ${random(255)})`;
-  const h = document.getElementById("show-word");
-  h.style.color = col;
+function randomFont() {
+  const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+  const showbox = document.getElementById("show-word");
   const font = checked[random(checked.length)].value;
-  h.className = font;
-});
+  showbox.className = font;
+  return font;
+}
 
 // Made to detect the input and change the word is it's correct
 const test = [
@@ -44,13 +39,14 @@ liveIn.addEventListener("input", (event) => {
   //  pressed.textContent = `pressed: "${event.key}"`;
 
   if (event.target.value == meaning) {
-    console.log("True, changed");
     const ran = random(5);
     meaning = test[ran]["meaning"];
     show.innerHTML = test[ran]["hiragana"];
+    f = randomFont();
+    console.log(`New word ${test[ran]["hiragana"]} and ${f}`);
 
     event.target.value = "";
   } else {
-    console.log("false");
+    console.log("False");
   }
 });
