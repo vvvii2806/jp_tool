@@ -21,7 +21,7 @@
     <div id="write">
       <h1>Japanese vocabulary thingy</h1>
 
-      <h2 id="show-word">ola</h2>
+      <h2 id="show-word"></h2>
 
       <div>
         <input type="text" id="answer" autocomplete="off" autofocus />
@@ -29,100 +29,128 @@
     </div>
 
     <div id="config">
-      <h2>Options menu</h2>
+      <h2 id="options">Options menu</h2>
 
-      <section class="sub">
-        <h3>Add new word</h3>
+      <div id="inner-config">
+        <section class="sub">
+          <h3>Add new word</h3>
 
-        <form action="PUT" id="add-word">
-          <div class="change-form">
-            <div>
-              <p>Meaning:</p>
-              <input type="text" id="meaning" placeholder="Meaning" />
-              <p>Hiragana:</p>
+          <form action="PUT" id="add-word">
+            <div class="change-form">
+              <div>
+                <p>Meaning:</p>
+                <input type="text" id="meaning" placeholder="Meaning" />
+                <p>Hiragana:</p>
+                <input type="text" id="new-hiragana" placeholder="Hiragana " />
+                <p>Katakana:</p>
+                <input type="text" id="new-katakana" placeholder="Katakana " />
+              </div>
+              <div>
+                <p>Kanji:</p>
+                <input type="text" id="new-kanji" placeholder="Kanji" />
+                <p>Note:</p>
+                <input type="text" id="new-note" placeholder="Note" />
+              </div>
+            </div>
+            <button id="submit-word" type="button">Add Word</button>
+          </form>
+        </section>
+
+        <section class="sub">
+          <h3>Update word</h3>
+
+          <form action="">
+            <div class="change-form">
               <input type="text" id="new-hiragana" placeholder="Hiragana " />
-              <p>Katakana:</p>
               <input type="text" id="new-katakana" placeholder="Katakana " />
-            </div>
-            <div>
-              <p>Kanji:</p>
               <input type="text" id="new-kanji" placeholder="Kanji" />
-              <p>Note:</p>
               <input type="text" id="new-note" placeholder="Note" />
+              <button id="update-word">Update word</button>
             </div>
+          </form>
+        </section>
+
+        <section class="sub">
+          <h3>Change fonts</h3>
+
+          <div id="font-select">
+            <label class="font-0 preview-kana"
+              ><input
+                type="checkbox"
+                class="font-type"
+                value="font-0"
+                checked
+              />ぬ</label
+            >
+            <label class="font-1 preview-kana"
+              ><input
+                type="checkbox"
+                class="font-type"
+                value="font-1"
+                checked
+              />ぬ</label
+            >
+            <label class="font-2 preview-kana"
+              ><input
+                type="checkbox"
+                class="font-type"
+                value="font-2"
+              />ぬ</label
+            >
+            <label class="font-3 preview-kana"
+              ><input type="checkbox" class="font-type" value="font-3" />
+              ぬ</label
+            >
+            <label class="font-4 preview-kana"
+              ><input type="checkbox" class="font-type" value="font-4" />
+              ぬ</label
+            >
+            <label class="font-5 preview-kana"
+              ><input type="checkbox" class="font-type" value="font-5" />
+              ぬ</label
+            >
+            <label class="font-6 preview-kana"
+              ><input type="checkbox" class="font-type" value="font-6" />
+              ぬ</label
+            >
+            <label class="font-7 preview-kana"
+              ><input
+                type="checkbox"
+                class="font-type"
+                value="font-7"
+              />ぬ</label
+            >
+            <label class="font-8 preview-kana"
+              ><input
+                type="checkbox"
+                class="font-type"
+                value="font-8"
+              />ぬ</label
+            >
+            <label class="font-9 preview-kana"
+              ><input
+                type="checkbox"
+                class="font-type"
+                value="font-9"
+              />ぬ</label
+            >
+            <label class="font-10 preview-kana"
+              ><input
+                type="checkbox"
+                class="font-type"
+                value="font-10"
+              />ぬ</label
+            >
+            <label class="font-11 preview-kana"
+              ><input
+                type="checkbox"
+                class="font-type"
+                value="font-11"
+              />ぬ</label
+            >
           </div>
-          <button id="submit-word" type="button">Add Word</button>
-        </form>
-      </section>
-
-      <section class="sub">
-        <h3>Update word</h3>
-
-        <form action="">
-          <div class="change-form">
-            <input type="text" id="new-hiragana" placeholder="Hiragana " />
-            <input type="text" id="new-katakana" placeholder="Katakana " />
-            <input type="text" id="new-kanji" placeholder="Kanji" />
-            <input type="text" id="new-note" placeholder="Note" />
-            <button id="update-word">Update word</button>
-          </div>
-        </form>
-      </section>
-
-      <section class="sub">
-        <h3>Change fonts</h3>
-
-        <div id="font-select">
-          <label class="font-0 preview-kana"
-            ><input type="checkbox" class="font-type" value="font-0" />ぬ</label
-          >
-          <label class="font-1 preview-kana"
-            ><input type="checkbox" class="font-type" value="font-1" />ぬ</label
-          >
-          <label class="font-2 preview-kana"
-            ><input type="checkbox" class="font-type" value="font-2" />ぬ</label
-          >
-          <label class="font-3 preview-kana"
-            ><input type="checkbox" class="font-type" value="font-3" />
-            ぬ</label
-          >
-          <label class="font-4 preview-kana"
-            ><input type="checkbox" class="font-type" value="font-4" />
-            ぬ</label
-          >
-          <label class="font-5 preview-kana"
-            ><input type="checkbox" class="font-type" value="font-5" />
-            ぬ</label
-          >
-          <label class="font-6 preview-kana"
-            ><input type="checkbox" class="font-type" value="font-6" />
-            ぬ</label
-          >
-          <label class="font-7 preview-kana"
-            ><input type="checkbox" class="font-type" value="font-7" />ぬ</label
-          >
-          <label class="font-8 preview-kana"
-            ><input type="checkbox" class="font-type" value="font-8" />ぬ</label
-          >
-          <label class="font-9 preview-kana"
-            ><input type="checkbox" class="font-type" value="font-9" />ぬ</label
-          >
-          <label class="font-10 preview-kana"
-            ><input
-              type="checkbox"
-              class="font-type"
-              value="font-10"
-            />ぬ</label
-          >
-          <label class="font-11 preview-kana"
-            ><input
-              type="checkbox"
-              class="font-type"
-              value="font-11"
-            />ぬ</label
-          >
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
 
     <script src="{{ url_for('static', filename='app.js') }}" defer></script>

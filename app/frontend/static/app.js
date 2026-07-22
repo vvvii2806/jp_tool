@@ -33,7 +33,7 @@ const show = document.getElementById("show-word");
 
 show.innerHTML = test[0]["hiragana"];
 let meaning = test[0]["meaning"];
-
+let prev = show.innerHTML;
 // ans.after(pressed);
 liveIn.addEventListener("input", (event) => {
   //  pressed.textContent = `pressed: "${event.key}"`;
@@ -49,4 +49,11 @@ liveIn.addEventListener("input", (event) => {
   } else {
     console.log("False");
   }
+});
+
+// show/hide menu
+const m = document.getElementById("options");
+const inner = document.getElementById("inner-config");
+m.addEventListener("click", () => {
+  inner.style.display = inner.style.display === "none" ? "block" : "none";
 });
